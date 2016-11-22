@@ -115,47 +115,6 @@ def createWindow():
 def main():
     createWindow()
 
-def penultimatePatch():
-    win = GraphWin("Penultimate Design", 100, 100)
-    
-    #Five Red Patches (Rows)
-    topLeftYCord = 0
-    bottomRightYCord = 10
-    
-    for i in range(5):
-        #Six Red Patches (Columns)
-        topLeftXCord = -5
-        bottomRightXCord = 5
-        
-        for j in range(6):
-            redShade = Rectangle(Point(topLeftXCord, topLeftYCord), Point(bottomRightXCord, bottomRightYCord))
-            redShade.setFill("red")
-            redShade.draw(win)
-            
-            topLeftXCord = topLeftXCord + (20)
-            bottomRightXCord = bottomRightXCord + (20)
-        
-        topLeftYCord = topLeftYCord + (20)
-        bottomRightYCord = bottomRightYCord + (20)
-
-    #White Spaces
-    whiteRectTopLeftYCord = 10
-    whiteBottomRightYCord = 20
-    
-    for l in range(5):
-        #Rows
-        whiteRectTopLeftXCord = 0
-        whiteBottomRightXCord = 20
-        
-        for k in range(5):
-            rect = Rectangle(Point(whiteRectTopLeftXCord, whiteRectTopLeftYCord), Point(whiteBottomRightXCord, whiteBottomRightYCord))
-            rect.draw(win)
-            whiteRectTopLeftXCord = whiteRectTopLeftXCord + (20)
-            whiteBottomRightXCord = whiteBottomRightXCord + (20)
-
-        whiteRectTopLeftYCord = whiteRectTopLeftYCord + (20)
-        whiteBottomRightYCord = whiteBottomRightYCord + (20)
-
 def createWindow():
     while True:
         size = eval(input("Enter Window Size: "))
