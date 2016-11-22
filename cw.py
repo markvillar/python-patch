@@ -7,15 +7,20 @@
 from graphics import *
 
 # Circle Patch
-def drawPatch(window, x, y, colour):
+def drawPatch(window, xStartPoint, yStartPoint):
+    
+    xStartPoint = xStartPoint + 50
+    yStartPoint = yStartPoint + 90
+    
+    colour = "red"    
     radius = 10
-    yCord = 90
-    for i in range(10):
-        circle = Circle(Point(x, y), radius)
+    
+    for i in range(5):
+        circle = Circle(Point(xStartPoint, yStartPoint), radius)
         circle.draw(window)
         circle.setOutline(colour)
         radius = radius + 10
-        yCord = yCord - 10
+        yStartPoint = yStartPoint - 10
 
 # Second patch shade
 def shade(window, topLeftX, topLeftY, bottomRightX, bottomRightY, colour):
