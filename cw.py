@@ -7,12 +7,11 @@
 from graphics import *
 
 # Circle Patch
-def drawPatch(window, xStartPoint, yStartPoint):
+def criclePatch(window, xStartPoint, yStartPoint, colour):
     
     xStartPoint = xStartPoint + 50
     yStartPoint = yStartPoint + 90
-    
-    colour = "red"    
+
     radius = 10
     
     for i in range(5):
@@ -23,7 +22,7 @@ def drawPatch(window, xStartPoint, yStartPoint):
         yStartPoint = yStartPoint - 10
 
 # Second Patch
-def singleAntepenultimatePatch(window, xStartPoint, yStartPoint):
+def penultimate(window, xStartPoint, yStartPoint, colour):
 
     #Midde Red Squares
     topLeftX = xStartPoint + 15
@@ -35,7 +34,7 @@ def singleAntepenultimatePatch(window, xStartPoint, yStartPoint):
     for o in range(5):
         
         for i in range(4):
-            shade(window, topLeftX, topLeftY, bottomRightX, bottomRightY, "red")
+            shade(window, topLeftX, topLeftY, bottomRightX, bottomRightY, colour)
             #Move both X coordinates to the right
             topLeftX = topLeftX + 20
             bottomRightX = bottomRightX + 20
@@ -59,7 +58,7 @@ def singleAntepenultimatePatch(window, xStartPoint, yStartPoint):
     for p in range(5):
         
         for j in range(2):
-            shade(window, topLeftX, topLeftY, bottomRightX, bottomRightY, "red")
+            shade(window, topLeftX, topLeftY, bottomRightX, bottomRightY, colour)
             #Move all the way to the right
             topLeftX = topLeftX + 95
             bottomRightX = bottomRightX + 95
@@ -102,6 +101,13 @@ def shade(window, topLeftX, topLeftY, bottomRightX, bottomRightY, colour):
     rect = Rectangle(Point(topLeftX, topLeftY), Point(bottomRightX, bottomRightY))
     rect.setFill(colour)
     rect.draw(window)
+
+def pattern():
+    #criclePatch(window, xStartPoint, yStartPoint)
+    #penultimate(window, xStartPoint, yStartPoint)
+    
+    for i in range():
+        
 
 def createWindow():
     while True:
