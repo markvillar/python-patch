@@ -22,15 +22,10 @@ def drawPatch(window, xStartPoint, yStartPoint):
         radius = radius + 10
         yStartPoint = yStartPoint - 10
 
-# Second patch shade
-def shade(window, topLeftX, topLeftY, bottomRightX, bottomRightY, colour):
-    rect = Rectangle(Point(topLeftX, topLeftY), Point(bottomRightX, bottomRightY))
-    rect.setFill(colour)
-    rect.draw(window)
-
+# Second Patch
 def singleAntepenultimatePatch():
     window = GraphWin("Window", 100, 100)
-
+    
     #Midde Red Squares
     topLeftX = 15
     topLeftY = 0
@@ -102,6 +97,12 @@ def singleAntepenultimatePatch():
         #Move downwards
         topLeftY = topLeftY + 20
         bottomRightY = bottomRightY + 20
+
+# Second patch shade
+def shade(window, topLeftX, topLeftY, bottomRightX, bottomRightY, colour):
+    rect = Rectangle(Point(topLeftX, topLeftY), Point(bottomRightX, bottomRightY))
+    rect.setFill(colour)
+    rect.draw(window)
 
 def createWindow():
     while True:
