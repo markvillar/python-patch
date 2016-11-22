@@ -114,20 +114,3 @@ def createWindow():
 
 def main():
     createWindow()
-
-def createWindow():
-    while True:
-        size = eval(input("Enter Window Size: "))
-        
-        if size == 500:
-            win = GraphWin("Patches", 500, 500)
-            break
-        if size == 700:
-            win = GraphWin("Patches", 700, 700)
-            break
-        if size == 900:
-            win = GraphWin("Patches", 900, 900)
-            break
-
-def main():
-    createWindow()
