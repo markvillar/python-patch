@@ -95,19 +95,16 @@ def penultimate(window, xStartPoint, yStartPoint, colour):
         #Move downwards
         topLeftY = topLeftY + 20
         bottomRightY = bottomRightY + 20
+    
+    #Line on Top
+    line = Line(Point(xStartPoint, yStartPoint), Point(xStartPoint + 100, yStartPoint))
+    line.draw(window)
 
 # Second patch shade
 def shade(window, topLeftX, topLeftY, bottomRightX, bottomRightY, colour):
     rect = Rectangle(Point(topLeftX, topLeftY), Point(bottomRightX, bottomRightY))
     rect.setFill(colour)
-    rect.draw(window)
-
-def pattern():
-    #criclePatch(window, xStartPoint, yStartPoint)
-    #penultimate(window, xStartPoint, yStartPoint)
-    
-    for i in range():
-        
+    rect.draw(window)        
 
 def createWindow():
     while True:
