@@ -23,15 +23,14 @@ def drawPatch(window, xStartPoint, yStartPoint):
         yStartPoint = yStartPoint - 10
 
 # Second Patch
-def singleAntepenultimatePatch():
-    window = GraphWin("Window", 100, 100)
-    
+def singleAntepenultimatePatch(window, xStartPoint, yStartPoint):
+
     #Midde Red Squares
-    topLeftX = 15
-    topLeftY = 0
+    topLeftX = xStartPoint + 15
+    topLeftY = yStartPoint
     
-    bottomRightX = 25
-    bottomRightY = 10
+    bottomRightX = xStartPoint + 25
+    bottomRightY = yStartPoint + 10
     
     for o in range(5):
         
@@ -41,21 +40,21 @@ def singleAntepenultimatePatch():
             topLeftX = topLeftX + 20
             bottomRightX = bottomRightX + 20
             
-        if topLeftX > 75:
-            topLeftX = 15
-        if bottomRightX > 85:
-            bottomRightX = 25
+        if topLeftX > (75 + xStartPoint):
+            topLeftX = xStartPoint + 15
+        if bottomRightX > (85 + xStartPoint):
+            bottomRightX = xStartPoint + 25
         
         #Move downwards
         topLeftY = topLeftY + 20
         bottomRightY = bottomRightY + 20
 
     #Half Red Squares (Edges)
-    topLeftX = 0
-    topLeftY = 0
+    topLeftX = xStartPoint
+    topLeftY = yStartPoint
     
-    bottomRightX = 5
-    bottomRightY = 10
+    bottomRightX = xStartPoint + 5
+    bottomRightY = yStartPoint + 10
     
     for p in range(5):
         
@@ -65,21 +64,21 @@ def singleAntepenultimatePatch():
             topLeftX = topLeftX + 95
             bottomRightX = bottomRightX + 95
             
-        if topLeftX >= 95:
-            topLeftX = 0
-        if bottomRightX >= 100:
-            bottomRightX = 5
+        if topLeftX > (95 + xStartPoint):
+            topLeftX = xStartPoint
+        if bottomRightX > (100 + xStartPoint):
+            bottomRightX = xStartPoint + 5
         
         #Move downwards
         topLeftY = topLeftY + 20
         bottomRightY = bottomRightY + 20
     
     #White Rows
-    topLeftX = 0
-    topLeftY = 10
+    topLeftX = xStartPoint
+    topLeftY = yStartPoint + 10
     
-    bottomRightX = 20
-    bottomRightY = 20
+    bottomRightX = xStartPoint + 20
+    bottomRightY = yStartPoint + 20
     
     for z in range(5):
         
@@ -89,10 +88,10 @@ def singleAntepenultimatePatch():
             topLeftX = topLeftX + 20
             bottomRightX = bottomRightX + 20
         
-        if topLeftX > 80:
-            topLeftX = 0
-        if bottomRightX > 100:
-            bottomRightX = 20
+        if topLeftX > (80 + xStartPoint):
+            topLeftX = xStartPoint
+        if bottomRightX > (100 + xStartPoint):
+            bottomRightX = xStartPoint + 20
         
         #Move downwards
         topLeftY = topLeftY + 20
