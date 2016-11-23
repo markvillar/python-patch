@@ -114,6 +114,13 @@ def getWindowSize():
     winSize = size * 100
     return winSize, size
 
+def getColour():
+    firstColour = input("Enter the first colour:")
+    secondColour = input("Enter the second colour:")
+    thirdColour = input("Enter the third colour:")
+    
+    return firstColour, secondColour, thirdColour
+
 def main():
     winSize, size = getWindowSize()
     win = GraphWin("Window", winSize, winSize)
