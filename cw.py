@@ -12,14 +12,14 @@ def criclePatch(window, xStartPoint, yStartPoint, colour):
     xStartPoint = xStartPoint + 50
     yStartPoint = yStartPoint + 90
 
-    radius = 10
+    radius = 5
     
-    for i in range(5):
+    for i in range(10):
         circle = Circle(Point(xStartPoint, yStartPoint), radius)
         circle.draw(window)
         circle.setOutline(colour)
-        radius = radius + 10
-        yStartPoint = yStartPoint - 10
+        radius = radius + 5
+        yStartPoint = yStartPoint - 5
 
 # Second Patch
 def penultimate(window, xStartPoint, yStartPoint, colour):
