@@ -8,6 +8,10 @@ from graphics import *
 
 # Circle Patch
 def criclePatch(window, xStartPoint, yStartPoint, colour):
+
+    #Rectangular Box
+    rect = Rectangle(Point(xStartPoint, yStartPoint), Point(xStartPoint + 100,yStartPoint + 100))
+    rect.draw(window)    
     
     xStartPoint = xStartPoint + 50
     yStartPoint = yStartPoint + 90
@@ -126,9 +130,9 @@ def main():
     win = GraphWin("Window", winSize, winSize)
     
     # Temp colour
-    firstColour = "brown"
-    secondColour = "orange"
-    thirdColour = "pink"
+    firstColour = "blue"
+    secondColour = "red"
+    thirdColour = "green"
     
     #Number of loops dependant on winSize
     if size == 5:
