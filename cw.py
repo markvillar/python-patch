@@ -22,7 +22,7 @@ def criclePatch(window, xStartPoint, yStartPoint, colour):
         yStartPoint = yStartPoint - 5
 
 # Second Patch
-def penultimate(window, xStartPoint, yStartPoint, colour):
+def penultimatePatch(window, xStartPoint, yStartPoint, colour):
 
     #Midde Red Squares
     topLeftX = xStartPoint + 15
@@ -104,21 +104,56 @@ def penultimate(window, xStartPoint, yStartPoint, colour):
 def shade(window, topLeftX, topLeftY, bottomRightX, bottomRightY, colour):
     rect = Rectangle(Point(topLeftX, topLeftY), Point(bottomRightX, bottomRightY))
     rect.setFill(colour)
-    rect.draw(window)        
+    rect.draw(window)
 
-def createWindow():
-    while True:
+def getWindowSize():
+    size = 0
+    validSize = [5, 7, 9]
+    while size not in validSize:
         size = eval(input("Enter Window Size: "))
-        
-        if size == 500:
-            win = GraphWin("Patches", 500, 500)
-            break
-        if size == 700:
-            win = GraphWin("Patches", 700, 700)
-            break
-        if size == 900:
-            win = GraphWin("Patches", 900, 900)
-            break
+    winSize = size * 100
+    return winSize, size
 
 def main():
-    createWindow()
+    winSize, size = getWindowSize()
+    win = GraphWin("Window", winSize, winSize)
+    
+    # Temp colour
+    firstColour = "brown"
+    secondColour = "orange"
+    thirdColour = "pink"
+    
+    #Number of loops dependant on winSize
+    if size == 5:
+        loop = 5
+    elif size == 7:
+        loop = 7
+    elif size == 9:
+        loop = 9
+
+    # X and Y Origin
+    xOrigin = 0
+    yOrigin = 0
+
+    #Diagonal circlePatch loop
+    for i in range(loop):
+        criclePatch(win, xOrigin, yOrigin, firstColour)
+        xOrigin = xOrigin + 100
+        yOrigin = yOrigin + 100
+    
+    #Horizontal circlePatch loop
+    xOrigin = 100
+    yOrigin = 0
+    
+    for i in range(loop - 1):
+        criclePatch(win, xOrigin, yOrigin, secondColour)
+        xOrigin = xOrigin + 100
+    
+    #Vertical circlePatch loop
+    xOrigin = winSize - 100
+    yOrigin = 100
+    
+    for i in range(loop - 2):
+        criclePatch(win, xOrigin, yOrigin, secondColour)
+        yOrigin = yOrigin + 100
+main()
