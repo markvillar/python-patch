@@ -185,15 +185,18 @@ def main():
     xOrigin = 200
     yOrigin = 100
 
-    adder = 100    
+    adder = 100
     sub = 3
     
+    #Downward loop
     for j in range(loop - 2):
         
+        #Sideward loop
         for i in range(loop - sub):
             penultimatePatch(win, xOrigin, yOrigin, secondColour)
             xOrigin = xOrigin + 100
         
+        #Prevent coordinates from going beyond the window
         if xOrigin >= winSize - 200:
             xOrigin = 200 + adder
         
