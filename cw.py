@@ -167,4 +167,12 @@ def main():
     for i in range(loop - 2):
         criclePatch(win, xOrigin, yOrigin, secondColour)
         yOrigin = yOrigin + 100
+
+    #Higher penultimate patch
+    xOrigin = 200
+    yOrigin = 100
+    for i in range(loop - 3):
+        penultimatePatch(win, xOrigin, yOrigin, secondColour)
+        xOrigin = xOrigin + 100
+
 main()
