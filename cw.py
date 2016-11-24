@@ -205,4 +205,23 @@ def main():
         sub = sub + 1
         
         yOrigin = yOrigin + 100
+    
+    #Lower penultimate patch
+    xOrigin = 0
+    yOrigin = 100
+    
+    innerLoop = 1
+    adder = 0
+    
+    for i in range(loop - 1):
+        
+        for j in range(innerLoop + adder):
+            penultimatePatch(win, xOrigin, yOrigin, thirdColour)
+            xOrigin = xOrigin + 100
+        
+        xOrigin = 0
+        yOrigin = yOrigin + 100
+        
+        adder = adder + 1
+
 main()
