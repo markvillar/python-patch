@@ -8,6 +8,10 @@ from graphics import *
 
 # Circle Patch
 def criclePatch(window, xStartPoint, yStartPoint, colour):
+
+    #Rectangular Box
+    rect = Rectangle(Point(xStartPoint, yStartPoint), Point(xStartPoint + 100,yStartPoint + 100))
+    rect.draw(window)    
     
     xStartPoint = xStartPoint + 50
     yStartPoint = yStartPoint + 90
@@ -31,14 +35,17 @@ def penultimatePatch(window, xStartPoint, yStartPoint, colour):
     bottomRightX = xStartPoint + 25
     bottomRightY = yStartPoint + 10
     
+    #Fill 5 rows
     for o in range(5):
         
+        #Place 4 squares for each row
         for i in range(4):
             shade(window, topLeftX, topLeftY, bottomRightX, bottomRightY, colour)
             #Move both X coordinates to the right
             topLeftX = topLeftX + 20
             bottomRightX = bottomRightX + 20
-            
+        
+        #Check if coordinates are still inside 100x100
         if topLeftX > (75 + xStartPoint):
             topLeftX = xStartPoint + 15
         if bottomRightX > (85 + xStartPoint):
@@ -55,14 +62,17 @@ def penultimatePatch(window, xStartPoint, yStartPoint, colour):
     bottomRightX = xStartPoint + 5
     bottomRightY = yStartPoint + 10
     
+    #Fill all 5 rows
     for p in range(5):
         
+        #Place two half squares (start and end) for each row
         for j in range(2):
             shade(window, topLeftX, topLeftY, bottomRightX, bottomRightY, colour)
             #Move all the way to the right
             topLeftX = topLeftX + 95
             bottomRightX = bottomRightX + 95
-            
+        
+        #Check if coordinates are still inside 100x100
         if topLeftX > (95 + xStartPoint):
             topLeftX = xStartPoint
         if bottomRightX > (100 + xStartPoint):
@@ -79,14 +89,17 @@ def penultimatePatch(window, xStartPoint, yStartPoint, colour):
     bottomRightX = xStartPoint + 20
     bottomRightY = yStartPoint + 20
     
+    
     for z in range(5):
         
+        #Fill rows with 5 squares each
         for k in range(5):
             shade(window, topLeftX, topLeftY, bottomRightX, bottomRightY, "white")
             #Move coordinates to the right
             topLeftX = topLeftX + 20
             bottomRightX = bottomRightX + 20
         
+        #Check if coordinates are still inside 100x100
         if topLeftX > (80 + xStartPoint):
             topLeftX = xStartPoint
         if bottomRightX > (100 + xStartPoint):
@@ -114,22 +127,33 @@ def getWindowSize():
     winSize = size * 100
     return winSize, size
 
-def main():
-    winSize, size = getWindowSize()
-    win = GraphWin("Window", winSize, winSize)
+def getColour():
+    firstColour = input("Enter the first colour:")
+    secondColour = input("Enter the second colour:")
+    thirdColour = input("Enter the third colour:")
     
-    # Temp colour
-    firstColour = "brown"
-    secondColour = "orange"
-    thirdColour = "pink"
-    
-    #Number of loops dependant on winSize
+    return firstColour, secondColour, thirdColour
+
+def checkSize(size):
     if size == 5:
         loop = 5
     elif size == 7:
         loop = 7
     elif size == 9:
         loop = 9
+    return loop
+
+def main():
+    winSize, size = getWindowSize()
+    win = GraphWin("Window", winSize, winSize)
+    
+    # Temp colour
+    firstColour = "blue"
+    secondColour = "red"
+    thirdColour = "green"
+    
+    #Number of loops dependant on winSize
+    loop = checkSize(size)
 
     # X and Y Origin
     xOrigin = 0
@@ -156,4 +180,29 @@ def main():
     for i in range(loop - 2):
         criclePatch(win, xOrigin, yOrigin, secondColour)
         yOrigin = yOrigin + 100
+
+    #Higher penultimate patch
+    xOrigin = 200
+    yOrigin = 100
+    for i in range(loop - 3):
+        penultimatePatch(win, xOrigin, yOrigin, secondColour)
+        xOrigin = xOrigin + 100
+        
+    xOrigin = 300
+    yOrigin = 200        
+    for i in range(loop - 4):
+        penultimatePatch(win, xOrigin, yOrigin, secondColour)
+        xOrigin = xOrigin + 100
+
+    xOrigin = 400
+    yOrigin = 300        
+    for i in range(loop - 5):
+        penultimatePatch(win, xOrigin, yOrigin, secondColour)
+        xOrigin = xOrigin + 100
+
+    xOrigin = 500
+    yOrigin = 400        
+    for i in range(loop - 6):
+        penultimatePatch(win, xOrigin, yOrigin, secondColour)
+        xOrigin = xOrigin + 100
 main()
