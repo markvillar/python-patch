@@ -181,28 +181,25 @@ def main():
         criclePatch(win, xOrigin, yOrigin, secondColour)
         yOrigin = yOrigin + 100
 
-    #Higher penultimate patch
+    #Higher penultimate patch    
     xOrigin = 200
     yOrigin = 100
-    for i in range(loop - 3):
-        penultimatePatch(win, xOrigin, yOrigin, secondColour)
-        xOrigin = xOrigin + 100
+
+    adder = 100    
+    sub = 3
+    
+    for j in range(loop - 2):
         
-    xOrigin = 300
-    yOrigin = 200        
-    for i in range(loop - 4):
-        penultimatePatch(win, xOrigin, yOrigin, secondColour)
-        xOrigin = xOrigin + 100
-
-    xOrigin = 400
-    yOrigin = 300        
-    for i in range(loop - 5):
-        penultimatePatch(win, xOrigin, yOrigin, secondColour)
-        xOrigin = xOrigin + 100
-
-    xOrigin = 500
-    yOrigin = 400        
-    for i in range(loop - 6):
-        penultimatePatch(win, xOrigin, yOrigin, secondColour)
-        xOrigin = xOrigin + 100
+        for i in range(loop - sub):
+            penultimatePatch(win, xOrigin, yOrigin, secondColour)
+            xOrigin = xOrigin + 100
+        
+        if xOrigin >= winSize - 200:
+            xOrigin = 200 + adder
+        
+        adder += 100
+        
+        sub = sub + 1
+        
+        yOrigin = yOrigin + 100
 main()
