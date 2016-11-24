@@ -125,6 +125,15 @@ def getColour():
     
     return firstColour, secondColour, thirdColour
 
+def checkSize(size):
+    if size == 5:
+        loop = 5
+    elif size == 7:
+        loop = 7
+    elif size == 9:
+        loop = 9
+    return loop
+
 def main():
     winSize, size = getWindowSize()
     win = GraphWin("Window", winSize, winSize)
@@ -135,12 +144,7 @@ def main():
     thirdColour = "green"
     
     #Number of loops dependant on winSize
-    if size == 5:
-        loop = 5
-    elif size == 7:
-        loop = 7
-    elif size == 9:
-        loop = 9
+    loop = checkSize(size)
 
     # X and Y Origin
     xOrigin = 0
