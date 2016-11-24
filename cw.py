@@ -147,10 +147,7 @@ def main():
     winSize, size = getWindowSize()
     win = GraphWin("Window", winSize, winSize)
     
-    # Temp colour
-    firstColour = "blue"
-    secondColour = "red"
-    thirdColour = "green"
+    firstColour, secondColour, thirdColour = getColour()
     
     #Number of loops dependant on winSize
     loop = checkSize(size)
