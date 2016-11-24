@@ -122,8 +122,9 @@ def shade(window, topLeftX, topLeftY, bottomRightX, bottomRightY, colour):
 def getWindowSize():
     size = 0
     validSize = [5, 7, 9]
+    size = eval(input("Enter Window Size: "))
     while size not in validSize:
-        size = eval(input("Enter Window Size: "))
+        size = eval(input("Enter a Valid Window Size: "))
     winSize = size * 100
     return winSize, size
 
