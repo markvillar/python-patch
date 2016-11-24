@@ -137,12 +137,11 @@ def colourValidation(firstColour, secondColour):
 def getColour():
     firstColour = input("Enter the first colour:")
     
-    secondColour = input("Enter the second colour:")
-    secondColour = colourValidation(firstColour, secondColour)
+    secondColour = colourValidation(firstColour, input("Enter the second colour:"))
     
-    thirdColour = input("Enter the third colour:")
-    thirdColour = colourValidation(secondColour, thirdColour)
-    thirdColour = colourValidation(thirdColour, firstColour)
+    thirdColour = colourValidation(secondColour, input("Enter the third colour:"))
+    
+    thirdColour = colourValidation(firstColour, thirdColour)
     
     return firstColour, secondColour, thirdColour
 
