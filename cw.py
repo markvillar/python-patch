@@ -200,7 +200,7 @@ def main():
         if xOrigin >= winSize - 200:
             xOrigin = 200 + adder
         
-        adder += 100
+        adder = adder + 100
         
         sub = sub + 1
         
