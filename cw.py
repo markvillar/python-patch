@@ -178,5 +178,22 @@ def main():
     for i in range(loop - 3):
         penultimatePatch(win, xOrigin, yOrigin, secondColour)
         xOrigin = xOrigin + 100
+        
+    xOrigin = 300
+    yOrigin = 200        
+    for i in range(loop - 4):
+        penultimatePatch(win, xOrigin, yOrigin, secondColour)
+        xOrigin = xOrigin + 100
 
+    xOrigin = 400
+    yOrigin = 300        
+    for i in range(loop - 5):
+        penultimatePatch(win, xOrigin, yOrigin, secondColour)
+        xOrigin = xOrigin + 100
+
+    xOrigin = 500
+    yOrigin = 400        
+    for i in range(loop - 6):
+        penultimatePatch(win, xOrigin, yOrigin, secondColour)
+        xOrigin = xOrigin + 100
 main()
