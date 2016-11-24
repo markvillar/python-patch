@@ -35,14 +35,17 @@ def penultimatePatch(window, xStartPoint, yStartPoint, colour):
     bottomRightX = xStartPoint + 25
     bottomRightY = yStartPoint + 10
     
+    #Fill 5 rows
     for o in range(5):
         
+        #Place 4 squares for each row
         for i in range(4):
             shade(window, topLeftX, topLeftY, bottomRightX, bottomRightY, colour)
             #Move both X coordinates to the right
             topLeftX = topLeftX + 20
             bottomRightX = bottomRightX + 20
-            
+        
+        #Check if coordinates are still inside 100x100
         if topLeftX > (75 + xStartPoint):
             topLeftX = xStartPoint + 15
         if bottomRightX > (85 + xStartPoint):
@@ -59,14 +62,17 @@ def penultimatePatch(window, xStartPoint, yStartPoint, colour):
     bottomRightX = xStartPoint + 5
     bottomRightY = yStartPoint + 10
     
+    #Fill all 5 rows
     for p in range(5):
         
+        #Place two half squares (start and end) for each row
         for j in range(2):
             shade(window, topLeftX, topLeftY, bottomRightX, bottomRightY, colour)
             #Move all the way to the right
             topLeftX = topLeftX + 95
             bottomRightX = bottomRightX + 95
-            
+        
+        #Check if coordinates are still inside 100x100
         if topLeftX > (95 + xStartPoint):
             topLeftX = xStartPoint
         if bottomRightX > (100 + xStartPoint):
@@ -83,14 +89,17 @@ def penultimatePatch(window, xStartPoint, yStartPoint, colour):
     bottomRightX = xStartPoint + 20
     bottomRightY = yStartPoint + 20
     
+    
     for z in range(5):
         
+        #Fill rows with 5 squares each
         for k in range(5):
             shade(window, topLeftX, topLeftY, bottomRightX, bottomRightY, "white")
             #Move coordinates to the right
             topLeftX = topLeftX + 20
             bottomRightX = bottomRightX + 20
         
+        #Check if coordinates are still inside 100x100
         if topLeftX > (80 + xStartPoint):
             topLeftX = xStartPoint
         if bottomRightX > (100 + xStartPoint):
