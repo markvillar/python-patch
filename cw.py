@@ -128,10 +128,21 @@ def getWindowSize():
     winSize = size * 100
     return winSize, size
 
+def colourValidation(firstColour, secondColour):
+    while secondColour == firstColour:
+        secondColour = input("Please enter another colour:")
+    else:
+        return secondColour
+
 def getColour():
     firstColour = input("Enter the first colour:")
+    
     secondColour = input("Enter the second colour:")
+    secondColour = colourValidation(firstColour, secondColour)
+    
     thirdColour = input("Enter the third colour:")
+    thirdColour = colourValidation(secondColour, thirdColour)
+    thirdColour = colourValidation(thirdColour, firstColour)
     
     return firstColour, secondColour, thirdColour
 
