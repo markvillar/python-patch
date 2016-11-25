@@ -130,13 +130,16 @@ def getWindowSize():
     return winSize, size
 
 def colourValidation(firstColour, secondColour):
-    while secondColour == firstColour:
+    
+    colourList = ["red", "green", "blue", "orange", "brown", "pink"]
+    
+    while secondColour == firstColour and secondColour not in colourList:
         secondColour = input("Please enter another colour:")
     else:
         return secondColour
 
 def getColour():
-    firstColour = input("Enter the first colour:")
+    firstColour = colourValidation("white", input("Enter the first colour:"))
     
     secondColour = colourValidation(firstColour, input("Enter the second colour:"))
     
