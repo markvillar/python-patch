@@ -25,7 +25,7 @@ def criclePatch(window, xStartPoint, yStartPoint, colour):
         radius = radius + 5
         yStartPoint = yStartPoint - 5
 
-# Second Patch
+# Penultimate Patch
 def penultimatePatch(window, xStartPoint, yStartPoint, colour):
 
     #Midde Red Squares
@@ -35,7 +35,7 @@ def penultimatePatch(window, xStartPoint, yStartPoint, colour):
     bottomRightX = xStartPoint + 25
     bottomRightY = yStartPoint + 10
     
-    #Fill 5 rows
+    #Fill all 5 rows
     for o in range(5):
         
         #Place 4 squares for each row
@@ -45,7 +45,7 @@ def penultimatePatch(window, xStartPoint, yStartPoint, colour):
             topLeftX = topLeftX + 20
             bottomRightX = bottomRightX + 20
         
-        #Check if coordinates are still inside 100x100
+        #Prevent coordinates from going beyond 100x100
         if topLeftX > (75 + xStartPoint):
             topLeftX = xStartPoint + 15
         if bottomRightX > (85 + xStartPoint):
@@ -65,24 +65,25 @@ def penultimatePatch(window, xStartPoint, yStartPoint, colour):
     #Fill all 5 rows
     for p in range(5):
         
-        #Place two half squares (start and end) for each row
+        #Place two half squares (on start and end) for each row
         for j in range(2):
             shade(window, topLeftX, topLeftY, bottomRightX, bottomRightY, colour)
-            #Move all the way to the right
+            
+            #Move all the way to the right (End side)
             topLeftX = topLeftX + 95
             bottomRightX = bottomRightX + 95
         
-        #Check if coordinates are still inside 100x100
+        #Prevent coordinates from going beyond 100x100
         if topLeftX > (95 + xStartPoint):
             topLeftX = xStartPoint
         if bottomRightX > (100 + xStartPoint):
             bottomRightX = xStartPoint + 5
         
-        #Move downwards
+        #Move to the next row
         topLeftY = topLeftY + 20
         bottomRightY = bottomRightY + 20
     
-    #White Rows
+    #White Suqares
     topLeftX = xStartPoint
     topLeftY = yStartPoint + 10
     
@@ -99,21 +100,21 @@ def penultimatePatch(window, xStartPoint, yStartPoint, colour):
             topLeftX = topLeftX + 20
             bottomRightX = bottomRightX + 20
         
-        #Check if coordinates are still inside 100x100
+        #Prevent coordinates from going beyond 100x100
         if topLeftX > (80 + xStartPoint):
             topLeftX = xStartPoint
         if bottomRightX > (100 + xStartPoint):
             bottomRightX = xStartPoint + 20
         
-        #Move downwards
+        #Move to the next row
         topLeftY = topLeftY + 20
         bottomRightY = bottomRightY + 20
     
-    #Line on Top
+    #Create a line on top of the patch
     line = Line(Point(xStartPoint, yStartPoint), Point(xStartPoint + 100, yStartPoint))
     line.draw(window)
 
-# Second patch shade
+# Penultimate patch square shade
 def shade(window, topLeftX, topLeftY, bottomRightX, bottomRightY, colour):
     rect = Rectangle(Point(topLeftX, topLeftY), Point(bottomRightX, bottomRightY))
     rect.setFill(colour)
@@ -163,17 +164,17 @@ def main():
     #Number of loops dependant on winSize
     loop = checkSize(size)
 
-    # X and Y Origin
+    # X and Y Origins
     xOrigin = 0
     yOrigin = 0
 
-    #Diagonal circlePatch loop
+    #Diagonal circle patch
     for i in range(loop):
         criclePatch(win, xOrigin, yOrigin, firstColour)
         xOrigin = xOrigin + 100
         yOrigin = yOrigin + 100
     
-    #Horizontal circlePatch loop
+    #Horizontal circle Patches
     xOrigin = 100
     yOrigin = 0
     
@@ -181,7 +182,7 @@ def main():
         criclePatch(win, xOrigin, yOrigin, secondColour)
         xOrigin = xOrigin + 100
     
-    #Vertical circlePatch loop
+    #Vertical circle patches
     xOrigin = winSize - 100
     yOrigin = 100
     
@@ -189,7 +190,7 @@ def main():
         criclePatch(win, xOrigin, yOrigin, secondColour)
         yOrigin = yOrigin + 100
 
-    #Higher penultimate patch    
+    #Higher level penultimate patches
     xOrigin = 200
     yOrigin = 100
 
@@ -204,7 +205,7 @@ def main():
             penultimatePatch(win, xOrigin, yOrigin, secondColour)
             xOrigin = xOrigin + 100
         
-        #Prevent coordinates from going beyond the window
+        #Prevent coordinates from going beyond the window (100x100)
         if xOrigin >= winSize - 200:
             xOrigin = 200 + adder
         
@@ -214,7 +215,7 @@ def main():
         
         yOrigin = yOrigin + 100
     
-    #Lower penultimate patch
+    #Lower penultimate patches
     xOrigin = 0
     yOrigin = 100
     
