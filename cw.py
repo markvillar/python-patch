@@ -133,7 +133,7 @@ def colourValidation(firstColour, secondColour):
     
     colourList = ["red", "green", "blue", "orange", "brown", "pink"]
     
-    while secondColour == firstColour and secondColour not in colourList:
+    while (secondColour == firstColour and secondColour not in colourList) or secondColour not in colourList:
         secondColour = input("Please enter another colour:")
     else:
         return secondColour
