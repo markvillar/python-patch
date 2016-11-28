@@ -8,14 +8,14 @@ from graphics import *
 
 # Circle Patch
 def circlePatch(window, xStartPoint, yStartPoint, colour):
-
+    
     #Rectangular Box
     rect = Rectangle(Point(xStartPoint, yStartPoint), Point(xStartPoint + 100,yStartPoint + 100))
     rect.draw(window)    
     
     xStartPoint = xStartPoint + 50
     yStartPoint = yStartPoint + 90
-
+    
     radius = 5
     
     for i in range(10):
@@ -27,7 +27,7 @@ def circlePatch(window, xStartPoint, yStartPoint, colour):
 
 # Penultimate Patch
 def penultimatePatch(window, xStartPoint, yStartPoint, colour):
-
+    
     #Midde Red Squares
     topLeftX = xStartPoint + 15
     topLeftY = yStartPoint
@@ -113,13 +113,13 @@ def penultimatePatch(window, xStartPoint, yStartPoint, colour):
     #Create a line on top of the patch
     line = Line(Point(xStartPoint, yStartPoint), Point(xStartPoint + 100, yStartPoint))
     line.draw(window)
-
+    
 # Penultimate patch square shade
 def shade(window, topLeftX, topLeftY, bottomRightX, bottomRightY, colour):
     rect = Rectangle(Point(topLeftX, topLeftY), Point(bottomRightX, bottomRightY))
     rect.setFill(colour)
     rect.draw(window)
-
+    
 def getWindowSize():
     size = 0
     validSize = [5, 7, 9]
@@ -128,7 +128,7 @@ def getWindowSize():
         size = eval(input("Enter a Valid Window Size: "))
     winSize = size * 100
     return winSize, size
-
+    
 def colourValidation(firstColour, secondColour):
     
     colourList = ["red", "green", "blue", "orange", "brown", "pink"]
@@ -137,7 +137,7 @@ def colourValidation(firstColour, secondColour):
         secondColour = input("Please enter another colour:")
     else:
         return secondColour
-
+    
 def getColour():
     firstColour = colourValidation("white", input("Enter the first colour:"))
     
@@ -148,7 +148,7 @@ def getColour():
     thirdColour = colourValidation(firstColour, thirdColour)
     
     return firstColour, secondColour, thirdColour
-
+    
 def checkSize(size):
     if size == 5:
         loop = 5
@@ -157,7 +157,7 @@ def checkSize(size):
     elif size == 9:
         loop = 9
     return loop
-
+    
 def main():
     winSize, size = getWindowSize()
     win = GraphWin("Window", winSize, winSize)
@@ -166,11 +166,11 @@ def main():
     
     #Number of loops dependant on winSize
     loop = checkSize(size)
-
+    
     # X and Y Origins
     xOrigin = 0
     yOrigin = 0
-
+    
     #Diagonal circle patch
     for i in range(loop):
         circlePatch(win, xOrigin, yOrigin, firstColour)
@@ -196,7 +196,7 @@ def main():
     #Higher level penultimate patches
     xOrigin = 200
     yOrigin = 100
-
+    
     adder = 100
     sub = 3
     
@@ -235,5 +235,5 @@ def main():
         yOrigin = yOrigin + 100
         
         adder = adder + 1
-
+        
 main()
