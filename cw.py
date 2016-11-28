@@ -7,7 +7,7 @@
 from graphics import *
 
 # Circle Patch
-def criclePatch(window, xStartPoint, yStartPoint, colour):
+def circlePatch(window, xStartPoint, yStartPoint, colour):
 
     #Rectangular Box
     rect = Rectangle(Point(xStartPoint, yStartPoint), Point(xStartPoint + 100,yStartPoint + 100))
@@ -173,7 +173,7 @@ def main():
 
     #Diagonal circle patch
     for i in range(loop):
-        criclePatch(win, xOrigin, yOrigin, firstColour)
+        circlePatch(win, xOrigin, yOrigin, firstColour)
         xOrigin = xOrigin + 100
         yOrigin = yOrigin + 100
     
@@ -182,7 +182,7 @@ def main():
     yOrigin = 0
     
     for i in range(loop - 1):
-        criclePatch(win, xOrigin, yOrigin, secondColour)
+        circlePatch(win, xOrigin, yOrigin, secondColour)
         xOrigin = xOrigin + 100
     
     #Vertical circle patches
@@ -190,7 +190,7 @@ def main():
     yOrigin = 100
     
     for i in range(loop - 2):
-        criclePatch(win, xOrigin, yOrigin, secondColour)
+        circlePatch(win, xOrigin, yOrigin, secondColour)
         yOrigin = yOrigin + 100
 
     #Higher level penultimate patches
