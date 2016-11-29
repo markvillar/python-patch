@@ -167,7 +167,7 @@ def main():
     #Number of loops dependant on winSize
     loop = checkSize(size)
     
-    stepper = 200
+    stepper = 100
     
     #Master Loop
     for y in range(0, winSize, 100):
@@ -185,8 +185,18 @@ def main():
             if x == (winSize - 100) and y != (winSize - 100):
                 circlePatch(win, x, y, secondColour)
             
-            #Higher level Penultimate Patches
-            
-            #Lower level Penultimate Patches
-            
+            #Penultimate Patches
+            if x != (winSize - 100) and x != y and y != 0:
+                
+                #Higher level Penultimate Patches
+                if x >= stepper:
+                    colour = secondColour
+                
+                #Lower level Penultimate Patches
+                else:
+                    colour = thirdColour
+                
+                penultimatePatch(win, x, y, colour)
+                
+        stepper = stepper + 100
 main()
