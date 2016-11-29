@@ -167,73 +167,26 @@ def main():
     #Number of loops dependant on winSize
     loop = checkSize(size)
     
-    # X and Y Origins
-    xOrigin = 0
-    yOrigin = 0
+    stepper = 200
     
-    #Diagonal circle patch
-    for i in range(loop):
-        circlePatch(win, xOrigin, yOrigin, firstColour)
-        xOrigin = xOrigin + 100
-        yOrigin = yOrigin + 100
-    
-    #Horizontal circle Patches
-    xOrigin = 100
-    yOrigin = 0
-    
-    for i in range(loop - 1):
-        circlePatch(win, xOrigin, yOrigin, secondColour)
-        xOrigin = xOrigin + 100
-    
-    #Vertical circle patches
-    xOrigin = winSize - 100
-    yOrigin = 100
-    
-    for i in range(loop - 2):
-        circlePatch(win, xOrigin, yOrigin, secondColour)
-        yOrigin = yOrigin + 100
-
-    #Higher level penultimate patches
-    xOrigin = 200
-    yOrigin = 100
-    
-    adder = 100
-    sub = 3
-    
-    #Downward loop
-    for j in range(loop - 2):
-        
-        #Sideward loop
-        for i in range(loop - sub):
-            penultimatePatch(win, xOrigin, yOrigin, secondColour)
-            xOrigin = xOrigin + 100
-        
-        #Prevent coordinates from going beyond the window (100x100)
-        if xOrigin >= winSize - 200:
-            xOrigin = 200 + adder
-        
-        adder = adder + 100
-        
-        sub = sub + 1
-        
-        yOrigin = yOrigin + 100
-    
-    #Lower penultimate patches
-    xOrigin = 0
-    yOrigin = 100
-    
-    innerLoop = 1
-    adder = 0
-    
-    for i in range(loop - 1):
-        
-        for j in range(innerLoop + adder):
-            penultimatePatch(win, xOrigin, yOrigin, thirdColour)
-            xOrigin = xOrigin + 100
-        
-        xOrigin = 0
-        yOrigin = yOrigin + 100
-        
-        adder = adder + 1
-        
+    #Master Loop
+    for y in range(0, winSize, 100):
+        for x in range(0, winSize, 100):
+            
+            #Diagonal Circle Patches
+            if x == y:
+                circlePatch(win, x, y, firstColour)
+            
+            #Horizontal Circle Patches
+            if x != 0 and y == 0:
+                circlePatch(win, x, y, secondColour)
+            
+            #Vertical Circle Patches
+            if x == (winSize - 100) and y != (winSize - 100):
+                circlePatch(win, x, y, secondColour)
+            
+            #Higher level Penultimate Patches
+            
+            #Lower level Penultimate Patches
+            
 main()
