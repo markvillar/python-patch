@@ -145,6 +145,7 @@ def main():
         stepper = stepper + 100
     
     #Colour Cycle
+    index = 1
     while True:
         
         #Get coordinates
@@ -152,6 +153,37 @@ def main():
         xPointer = pointer.getX()
         yPointer = pointer.getY()
         
-        print(getCoordinates(xPointer, yPointer))
-    
+        #Return Processed Coordinates
+        xOrigin, yOrigin = getCoordinates(xPointer, yPointer)
+        
+        #Diagonal Circle Patches
+        if xOrigin == yOrigin:
+            circlePatch(win, xOrigin, yOrigin, colourList[index])
+        
+        #Horizontal Circle Patches
+        if xOrigin != 0 and yOrigin == 0:
+            circlePatch(win, xOrigin, yOrigin, colourList[index])
+
+        #Vertical Circle Patches
+        if xOrigin == (winSize - 100) and yOrigin != (winSize - 100):
+            circlePatch(win, xOrigin, yOrigin, colourList[index])
+
+        #Penultimate Patches
+        if xOrigin != (winSize - 100) and xOrigin != yOrigin and yOrigin != 0:
+            
+            #Higher level Penultimate Patches
+            if xOrigin >= stepper:
+                colour = colourList[index]
+            
+            #Lower level Penultimate Patches
+            else:
+                colour = colourList[index]
+            
+            penultimatePatch(win, xOrigin, yOrigin, colour)
+                
+        stepper = stepper + 100
+        index = index + 1
+        
+        if index >= 3:
+            index = 0
 main()
