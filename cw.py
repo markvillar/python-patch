@@ -7,23 +7,23 @@
 from graphics import *
 
 # Circle Patch
-def circlePatch(window, xStartPoint, yStartPoint, colour):
+def circlePatch(window, xOrigin, yOrigin, colour):
     
     #Rectangular Box
-    rect = Rectangle(Point(xStartPoint, yStartPoint), Point(xStartPoint + 100,yStartPoint + 100))
+    rect = Rectangle(Point(xOrigin, yOrigin), Point(xOrigin + 100, yOrigin + 100))
     rect.draw(window)    
     
-    xStartPoint = xStartPoint + 50
-    yStartPoint = yStartPoint + 90
+    xOrigin = xOrigin + 50
+    yOrigin = yOrigin + 90
     
     radius = 5
     
     for i in range(10):
-        circle = Circle(Point(xStartPoint, yStartPoint), radius)
+        circle = Circle(Point(xOrigin, yOrigin), radius)
         circle.draw(window)
         circle.setOutline(colour)
         radius = radius + 5
-        yStartPoint = yStartPoint - 5
+        yOrigin = yOrigin - 5
 
 # Penultimate patch square shade
 def drawSquare(window, topLeftX, topLeftY, bottomRightX, bottomRightY, colour):
@@ -32,22 +32,22 @@ def drawSquare(window, topLeftX, topLeftY, bottomRightX, bottomRightY, colour):
     rect.draw(window)
 
 # Penultimate Patch
-def penultimatePatch(window, xStartPoint, yStartPoint, colour):
+def penultimatePatch(window, xOrigin, yOrigin, colour):
     
     #Inverted Background
-    drawSquare(window, xStartPoint, yStartPoint, xStartPoint + 100, yStartPoint + 100, colour)
+    drawSquare(window, xOrigin, yOrigin, xOrigin + 100, yOrigin + 100, colour)
     
     #White Square Coodinates
-    whiteSquareXCoordinates = list(range(xStartPoint + 5, xStartPoint + 86, 20))
-    whiteSquareYCoordinates = list(range(yStartPoint, yStartPoint + 101, 20))
+    whiteSquareXCoordinates = list(range(xOrigin + 5, xOrigin + 86, 20))
+    whiteSquareYCoordinates = list(range(yOrigin, yOrigin + 101, 20))
     
     #White Rectangular Coordinates
-    whiteRectangularXCoordinates = list(range(xStartPoint, xStartPoint + 101, 20))
-    whiteRectangularYCoordinates = list(range(yStartPoint + 10, yStartPoint + 91, 20))
+    whiteRectangularXCoordinates = list(range(xOrigin, xOrigin + 101, 20))
+    whiteRectangularYCoordinates = list(range(yOrigin + 10, yOrigin + 91, 20))
     
     #Penultimate Patch Master Loop
-    for y in range(yStartPoint, yStartPoint + 100, 10):
-        for x in range(xStartPoint, xStartPoint + 100, 5):
+    for y in range(yOrigin, yOrigin + 100, 10):
+        for x in range(xOrigin, xOrigin + 100, 5):
             
             #White Squares
             if x in whiteSquareXCoordinates and y in whiteSquareYCoordinates:
@@ -137,4 +137,5 @@ def main():
                 penultimatePatch(win, x, y, colour)
                 
         stepper = stepper + 100
+        
 main()
