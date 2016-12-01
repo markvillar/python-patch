@@ -100,7 +100,8 @@ def main():
     win = GraphWin("Window", winSize, winSize)
     
     #Get choice of colour
-    firstColour, secondColour, thirdColour = getColour()
+    colourList = []
+    colourList = getColour()
     
     #Number of loops dependant on winSize
     loop = checkSize(size)
@@ -113,26 +114,26 @@ def main():
             
             #Diagonal Circle Patches
             if x == y:
-                circlePatch(win, x, y, firstColour)
+                circlePatch(win, x, y, colourList[0])
             
             #Horizontal Circle Patches
             if x != 0 and y == 0:
-                circlePatch(win, x, y, secondColour)
+                circlePatch(win, x, y, colourList[1])
             
             #Vertical Circle Patches
             if x == (winSize - 100) and y != (winSize - 100):
-                circlePatch(win, x, y, secondColour)
+                circlePatch(win, x, y, colourList[1])
             
             #Penultimate Patches
             if x != (winSize - 100) and x != y and y != 0:
                 
                 #Higher level Penultimate Patches
                 if x >= stepper:
-                    colour = secondColour
+                    colour = colourList[1]
                 
                 #Lower level Penultimate Patches
                 else:
-                    colour = thirdColour
+                    colour = colourList[2]
                 
                 penultimatePatch(win, x, y, colour)
                 
