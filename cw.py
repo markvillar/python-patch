@@ -25,101 +25,38 @@ def circlePatch(window, xStartPoint, yStartPoint, colour):
         radius = radius + 5
         yStartPoint = yStartPoint - 5
 
-# Penultimate Patch
-def penultimatePatch(window, xStartPoint, yStartPoint, colour):
-    
-    #Midde Red Squares
-    topLeftX = xStartPoint + 15
-    topLeftY = yStartPoint
-    
-    bottomRightX = xStartPoint + 25
-    bottomRightY = yStartPoint + 10
-    
-    #Fill all 5 rows
-    for o in range(5):
-        
-        #Place 4 squares for each row
-        for i in range(4):
-            shade(window, topLeftX, topLeftY, bottomRightX, bottomRightY, colour)
-            #Move both X coordinates to the right
-            topLeftX = topLeftX + 20
-            bottomRightX = bottomRightX + 20
-        
-        #Prevent coordinates from going beyond 100x100
-        if topLeftX > (75 + xStartPoint):
-            topLeftX = xStartPoint + 15
-        if bottomRightX > (85 + xStartPoint):
-            bottomRightX = xStartPoint + 25
-        
-        #Move downwards
-        topLeftY = topLeftY + 20
-        bottomRightY = bottomRightY + 20
-
-    #Half Red Squares (Edges)
-    topLeftX = xStartPoint
-    topLeftY = yStartPoint
-    
-    bottomRightX = xStartPoint + 5
-    bottomRightY = yStartPoint + 10
-    
-    #Fill all 5 rows
-    for p in range(5):
-        
-        #Place two half squares (on start and end) for each row
-        for j in range(2):
-            shade(window, topLeftX, topLeftY, bottomRightX, bottomRightY, colour)
-            
-            #Move all the way to the right (End side)
-            topLeftX = topLeftX + 95
-            bottomRightX = bottomRightX + 95
-        
-        #Prevent coordinates from going beyond 100x100
-        if topLeftX > (95 + xStartPoint):
-            topLeftX = xStartPoint
-        if bottomRightX > (100 + xStartPoint):
-            bottomRightX = xStartPoint + 5
-        
-        #Move to the next row
-        topLeftY = topLeftY + 20
-        bottomRightY = bottomRightY + 20
-    
-    #White Suqares
-    topLeftX = xStartPoint
-    topLeftY = yStartPoint + 10
-    
-    bottomRightX = xStartPoint + 20
-    bottomRightY = yStartPoint + 20
-    
-    
-    for z in range(5):
-        
-        #Fill rows with 5 squares each
-        for k in range(5):
-            shade(window, topLeftX, topLeftY, bottomRightX, bottomRightY, "white")
-            #Move coordinates to the right
-            topLeftX = topLeftX + 20
-            bottomRightX = bottomRightX + 20
-        
-        #Prevent coordinates from going beyond 100x100
-        if topLeftX > (80 + xStartPoint):
-            topLeftX = xStartPoint
-        if bottomRightX > (100 + xStartPoint):
-            bottomRightX = xStartPoint + 20
-        
-        #Move to the next row
-        topLeftY = topLeftY + 20
-        bottomRightY = bottomRightY + 20
-    
-    #Create a line on top of the patch
-    line = Line(Point(xStartPoint, yStartPoint), Point(xStartPoint + 100, yStartPoint))
-    line.draw(window)
-    
 # Penultimate patch square shade
-def shade(window, topLeftX, topLeftY, bottomRightX, bottomRightY, colour):
+def drawSquare(window, topLeftX, topLeftY, bottomRightX, bottomRightY, colour):
     rect = Rectangle(Point(topLeftX, topLeftY), Point(bottomRightX, bottomRightY))
     rect.setFill(colour)
     rect.draw(window)
+
+# Penultimate Patch
+def penultimatePatch(window, xStartPoint, yStartPoint, colour):
     
+    #Inverted Background
+    drawSquare(window, xStartPoint, yStartPoint, xStartPoint + 100, yStartPoint + 100, colour)
+    
+    #White Square Coodinates
+    whiteSquareXCoordinates = list(range(xStartPoint + 5, xStartPoint + 86, 20))
+    whiteSquareYCoordinates = list(range(yStartPoint, yStartPoint + 101, 20))
+    
+    #White Rectangular Coordinates
+    whiteRectangularXCoordinates = list(range(xStartPoint, xStartPoint + 101, 20))
+    whiteRectangularYCoordinates = list(range(yStartPoint + 10, yStartPoint + 91, 20))
+    
+    #Penultimate Patch Master Loop
+    for y in range(yStartPoint, yStartPoint + 100, 10):
+        for x in range(xStartPoint, xStartPoint + 100, 5):
+            
+            #White Squares
+            if x in whiteSquareXCoordinates and y in whiteSquareYCoordinates:
+                drawSquare(window, x, y, x + 10, y + 10, "white")
+            
+            #White Rectangles
+            if x in whiteRectangularXCoordinates and y in whiteRectangularYCoordinates:
+                drawSquare(window, x, y, x + 20, y + 10, "white")
+            
 def getWindowSize():
     size = 0
     validSize = [5, 7, 9]
@@ -162,6 +99,7 @@ def main():
     winSize, size = getWindowSize()
     win = GraphWin("Window", winSize, winSize)
     
+    #Get choice of colour
     firstColour, secondColour, thirdColour = getColour()
     
     #Number of loops dependant on winSize
