@@ -3,7 +3,7 @@
 #   Author:         Mark Villar                    Date: 22-11-16
 #   Student ID:     UP773229
 #-----------------------------------------------------------------
-
+import math
 from graphics import *
 
 # Circle Patch
@@ -94,7 +94,12 @@ def checkSize(size):
     elif size == 9:
         loop = 9
     return loop
-    
+
+def getCoordinates(xPointer, yPointer):
+    xPointer = 100 * math.floor(xPointer/100.0)
+    yPointer = 100 * math.floor(yPointer/100.0)
+    return xPointer, yPointer
+        
 def main():
     winSize, size = getWindowSize()
     win = GraphWin("Window", winSize, winSize)
@@ -138,5 +143,47 @@ def main():
                 penultimatePatch(win, x, y, colour)
                 
         stepper = stepper + 100
+    
+    #Colour Cycle
+    index = 1
+    while True:
         
+        #Get coordinates
+        pointer = win.getMouse()
+        xPointer = pointer.getX()
+        yPointer = pointer.getY()
+        
+        #Return Processed Coordinates
+        xOrigin, yOrigin = getCoordinates(xPointer, yPointer)
+        
+        #Diagonal Circle Patches
+        if xOrigin == yOrigin:
+            circlePatch(win, xOrigin, yOrigin, colourList[index])
+        
+        #Horizontal Circle Patches
+        if xOrigin != 0 and yOrigin == 0:
+            circlePatch(win, xOrigin, yOrigin, colourList[index])
+
+        #Vertical Circle Patches
+        if xOrigin == (winSize - 100) and yOrigin != (winSize - 100):
+            circlePatch(win, xOrigin, yOrigin, colourList[index])
+
+        #Penultimate Patches
+        if xOrigin != (winSize - 100) and xOrigin != yOrigin and yOrigin != 0:
+            
+            #Higher level Penultimate Patches
+            if xOrigin >= stepper:
+                colour = colourList[index]
+            
+            #Lower level Penultimate Patches
+            else:
+                colour = colourList[index]
+            
+            penultimatePatch(win, xOrigin, yOrigin, colour)
+                
+        stepper = stepper + 100
+        index = index + 1
+        
+        if index >= 3:
+            index = 0
 main()
