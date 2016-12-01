@@ -3,7 +3,7 @@
 #   Author:         Mark Villar                    Date: 22-11-16
 #   Student ID:     UP773229
 #-----------------------------------------------------------------
-
+import math
 from graphics import *
 
 # Circle Patch
@@ -94,7 +94,12 @@ def checkSize(size):
     elif size == 9:
         loop = 9
     return loop
-    
+
+def getCoordinates(xPointer, yPointer):
+    xPointer = 100 * math.floor(xPointer/100.0)
+    yPointer = 100 * math.floor(yPointer/100.0)
+    return xPointer, yPointer
+        
 def main():
     winSize, size = getWindowSize()
     win = GraphWin("Window", winSize, winSize)
@@ -138,5 +143,15 @@ def main():
                 penultimatePatch(win, x, y, colour)
                 
         stepper = stepper + 100
+    
+    #Colour Cycle
+    while True:
         
+        #Get coordinates
+        pointer = win.getMouse()
+        xPointer = pointer.getX()
+        yPointer = pointer.getY()
+        
+        print(getCoordinates(xPointer, yPointer))
+    
 main()
