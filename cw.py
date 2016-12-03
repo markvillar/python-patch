@@ -80,8 +80,16 @@ def getColour():
     while firstColour == secondColour == thirdColour or firstColour == secondColour or secondColour == thirdColour or firstColour == thirdColour and (firstColour not in colourList and secondColour not in colourList and thirdColour not in colourList):
         
         firstColour = input("Enter the first colour:")
+        
         secondColour = input("Enter the second colour:")
+        
+        while secondColour == firstColour:
+            secondColour = input("Please enter another colour:")
+        
         thirdColour = input("Enter the third colour:")
+        
+        while thirdColour == secondColour or thirdColour == firstColour:
+            thirdColour = input("Please enter another colour:")
     
     return firstColour, secondColour, thirdColour
     
