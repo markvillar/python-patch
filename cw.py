@@ -31,7 +31,7 @@ def drawSquare(window, topLeftX, topLeftY, bottomRightX, bottomRightY, colour):
     rect = Rectangle(Point(topLeftX, topLeftY), Point(bottomRightX, bottomRightY))
     rect.setFill(colour)
     rect.draw(window)
-
+    
 # Penultimate Patch
 def penultimatePatch(window, xOrigin, yOrigin, colour):
     
@@ -68,24 +68,20 @@ def getWindowSize():
     winSize = size * 100
     return winSize, size
     
-#Validate and assign only valid colours that are on the list
-def colourValidation(firstColour, secondColour):
-    
-    #List of valid colours
-    colourList = ["red", "green", "blue", "orange", "brown", "pink"]
-    
-    #Keep prompting until colour is on the list and is unique
-    while (secondColour == firstColour and secondColour not in colourList) or secondColour not in colourList:
-        secondColour = input("Please enter another colour:")
-    else:
-        return secondColour
-
 #Get 3 colours from user
 def getColour():
-    firstColour = colourValidation("white", input("Enter the first colour:"))
-    secondColour = colourValidation(firstColour, input("Enter the second colour:"))    
-    thirdColour = colourValidation(secondColour, input("Enter the third colour:"))    
-    thirdColour = colourValidation(firstColour, thirdColour)
+    
+    firstColour = ""
+    secondColour = ""
+    thirdColour = ""
+    
+    colourList = ["red", "green", "blue", "orange", "brown", "pink"]
+    
+    while firstColour == secondColour == thirdColour or firstColour == secondColour or secondColour == thirdColour or firstColour == thirdColour and (firstColour not in colourList and secondColour not in colourList and thirdColour not in colourList):
+        
+        firstColour = input("Enter the first colour:")
+        secondColour = input("Enter the second colour:")
+        thirdColour = input("Enter the third colour:")
     
     return firstColour, secondColour, thirdColour
     
