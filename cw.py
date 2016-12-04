@@ -83,12 +83,10 @@ def getColour():
         firstColour = input("Please enter a valid colour:")
     
     secondColour = input("Enter the second colour:")
-    
     while secondColour == firstColour or secondColour not in colourList:
         secondColour = input("Please enter another valid colour:")
     
     thirdColour = input("Enter the third colour:")
-    
     while thirdColour == secondColour or thirdColour == firstColour or thirdColour not in colourList:
         thirdColour = input("Please enter another valid colour:")
     
