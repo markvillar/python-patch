@@ -77,22 +77,20 @@ def getColour():
     
     colourList = ["red", "green", "blue", "orange", "brown", "pink"]
     
-    while firstColour == secondColour == thirdColour or firstColour == secondColour or secondColour == thirdColour or firstColour == thirdColour and (firstColour not in colourList and secondColour not in colourList and thirdColour not in colourList):
-        
-        firstColour = input("Enter the first colour:")
-        while firstColour not in colourList:
-            firstColour = input("Please enter a valid colour:")
-        
-        secondColour = input("Enter the second colour:")
-        
-        while secondColour == firstColour or secondColour not in colourList:
-            secondColour = input("Please enter another valid colour:")
-        
-        thirdColour = input("Enter the third colour:")
-        
-        while thirdColour == secondColour or thirdColour == firstColour or thirdColour not in colourList:
-            thirdColour = input("Please enter another valid colour:")
+    firstColour = input("Enter the first colour:")
+    while firstColour not in colourList:
+        firstColour = input("Please enter a valid colour:")
     
+    secondColour = input("Enter the second colour:")
+    
+    while secondColour == firstColour or secondColour not in colourList:
+        secondColour = input("Please enter another valid colour:")
+    
+    thirdColour = input("Enter the third colour:")
+    
+    while thirdColour == secondColour or thirdColour == firstColour or thirdColour not in colourList:
+        thirdColour = input("Please enter another valid colour:")
+
     return firstColour, secondColour, thirdColour
     
 #Round down X and Y coodinates to their nearest hundredth
