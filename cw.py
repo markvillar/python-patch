@@ -104,6 +104,9 @@ def getIndex(xOrigin, yOrigin, offset):
     topIndex = xOrigin/100
     sideIndex = yOrigin/100
     index = (sideIndex * offset) + topIndex
+    
+    #Float to int
+    index = int(index)
     return index
 
 #Main program
