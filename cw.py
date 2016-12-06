@@ -133,7 +133,7 @@ def main():
                 circlePatch(win, x, y, colourList[1])
             
             #Vertical Circle Patches
-            if x == (winSize - 100) and y != (winSize - 100):
+            if x == (winSize - 100) and y != (winSize - 100) and y != 0:
                 circlePatch(win, x, y, colourList[1])
             
             #Penultimate Patches
@@ -172,7 +172,7 @@ def main():
             circlePatch(win, xOrigin, yOrigin, colourList[index])
             
         #Vertical Circle Patches
-        if xOrigin == (winSize - 100) and yOrigin != (winSize - 100):
+        if xOrigin == (winSize - 100) and yOrigin != (winSize - 100) and yOrigin != 0:
             circlePatch(win, xOrigin, yOrigin, colourList[index])
         
         #Penultimate Patches
