@@ -65,8 +65,9 @@ def getWindowSize():
     size = eval(input("Enter Window Size: "))
     while size not in validSize:
         size = eval(input("Enter a Valid Window Size: "))
+    offset = size - 1
     winSize = size * 100
-    return winSize, size
+    return winSize, size, offset
     
 #Get 3 colours from user
 def getColour():
@@ -98,9 +99,19 @@ def getCoordinates(xPointer, yPointer):
     yPointer = 100 * math.floor(yPointer/100.0)
     return xPointer, yPointer
 
+def getIndex(xOrigin, yOrigin, offset):
+    #Colour index location
+    topIndex = xOrigin/100
+    sideIndex = yOrigin/100
+    index = (sideIndex * offset) + topIndex
+    
+    #Float to int
+    index = int(index)
+    return index
+
 #Main program
 def main():
-    winSize, size = getWindowSize()
+    winSize, size, offset = getWindowSize()
     win = GraphWin("Window", winSize, winSize)
     
     #Get choice of colour
@@ -122,7 +133,7 @@ def main():
                 circlePatch(win, x, y, colourList[1])
             
             #Vertical Circle Patches
-            if x == (winSize - 100) and y != (winSize - 100):
+            if x == (winSize - 100) and y != (winSize - 100) and y != 0:
                 circlePatch(win, x, y, colourList[1])
             
             #Penultimate Patches
@@ -161,7 +172,7 @@ def main():
             circlePatch(win, xOrigin, yOrigin, colourList[index])
             
         #Vertical Circle Patches
-        if xOrigin == (winSize - 100) and yOrigin != (winSize - 100):
+        if xOrigin == (winSize - 100) and yOrigin != (winSize - 100) and yOrigin != 0:
             circlePatch(win, xOrigin, yOrigin, colourList[index])
         
         #Penultimate Patches
