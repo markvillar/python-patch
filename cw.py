@@ -124,18 +124,19 @@ def main():
     for y in range(0, winSize, 100):
         for x in range(0, winSize, 100):
             
-            #Diagonal Circle Patches
-            if x == y:
-                circlePatch(win, x, y, colourList[0])
-            
-            #Horizontal Circle Patches
-            if x != 0 and y == 0:
-                circlePatch(win, x, y, colourList[1])
-            
-            #Vertical Circle Patches
-            if x == (winSize - 100) and y != (winSize - 100) and y != 0:
-                circlePatch(win, x, y, colourList[1])
-            
+            #Circle Patches
+            if (x == y) or (x != 0 and y == 0) or (x == (winSize - 100) and y != (winSize - 100) and y != 0):
+                
+                if x == y:
+                    colourValue = 0
+                elif x != 0 and y == 0:
+                    colourValue = 1
+                elif x == (winSize - 100) and y != (winSize - 100) and y != 0:
+                    colourValue = 1
+                
+                circlePatch(win, x, y, colourList[colourValue])
+                elements.append(colourValue)
+                
             #Penultimate Patches
             if x != (winSize - 100) and x != y and y != 0:
                 
@@ -164,19 +165,18 @@ def main():
         xOrigin, yOrigin = getCoordinates(xPointer, yPointer)
         
         #Diagonal Circle Patches
-        if xOrigin == yOrigin:
-            circlePatch(win, xOrigin, yOrigin, colourList[index])
+        if (xOrigin == yOrigin) or (xOrigin != 0 and yOrigin == 0) or (xOrigin == (winSize - 100) and yOrigin != (winSize - 100) and yOrigin != 0):
             
-        #Horizontal Circle Patches
-        if xOrigin != 0 and yOrigin == 0:
-            circlePatch(win, xOrigin, yOrigin, colourList[index])
+            #########################
+            print("Circle Patch")
             
-        #Vertical Circle Patches
-        if xOrigin == (winSize - 100) and yOrigin != (winSize - 100) and yOrigin != 0:
+            circlePatch(win, xOrigin, yOrigin, colourList[indexValue])
+            elements[indexNumber] = indexValue
+            
             circlePatch(win, xOrigin, yOrigin, colourList[index])
         
         #Penultimate Patches
-        if xOrigin != (winSize - 100) and xOrigin != yOrigin and yOrigin != 0:
+        elif xOrigin != (winSize - 100) and xOrigin != yOrigin and yOrigin != 0:
             
             #Higher level Penultimate Patches
             if xOrigin >= stepper:
