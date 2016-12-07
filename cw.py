@@ -66,8 +66,9 @@ def getWindowSize():
     while size not in validSize:
         size = eval(input("Enter a Valid Window Size: "))
     offset = size - 1
+    winSizeOffset = offset * 100
     winSize = size * 100
-    return winSize, size, offset
+    return winSize, size, winSizeOffset, offset
     
 #Get 3 colours from user
 def getColour():
@@ -111,7 +112,7 @@ def getIndex(xOrigin, yOrigin, offset):
 
 #Main program
 def main():
-    winSize, size, offset = getWindowSize()
+    winSize, size, winSizeOffset, offset = getWindowSize()
     win = GraphWin("Window", winSize, winSize)
     
     #Get choice of colour
@@ -125,7 +126,7 @@ def main():
         for x in range(0, winSize, 100):
             
             #Circle Patches
-            if (x == y) or (x != 0 and y == 0) or (x == (winSize - 100) and y != (winSize - 100) and y != 0):
+            if (x == y) or (x > 0 and y == 0) or (x == (winSizeOffset) and y != (winSize - 100) and y != 0):
                 
                 if x == y:
                     colourValue = 0
@@ -136,7 +137,7 @@ def main():
                 elements.append(colourValue)
                 
             #Penultimate Patches
-            if x != (winSize - 100) and x != y and y != 0:
+            elif x != winSizeOffset and x != y and y != 0:
                 
                 #Higher level Penultimate Patches
                 if x >= stepper:
@@ -164,9 +165,9 @@ def main():
         
         #Diagonal Circle Patches
         if (xOrigin == yOrigin) or (xOrigin != 0 and yOrigin == 0) or (xOrigin == (winSize - 100) and yOrigin != (winSize - 100) and yOrigin != 0):
+        if (xOrigin == yOrigin) or (xOrigin != 0 and yOrigin == 0) or (xOrigin == (winSizeOffset) and yOrigin != (winSizeOffset) and yOrigin != 0):
             
             #########################
-            print("Circle Patch")
             
             circlePatch(win, xOrigin, yOrigin, colourList[indexValue])
             elements[indexNumber] = indexValue
@@ -174,7 +175,7 @@ def main():
             circlePatch(win, xOrigin, yOrigin, colourList[index])
         
         #Penultimate Patches
-        elif xOrigin != (winSize - 100) and xOrigin != yOrigin and yOrigin != 0:
+        elif xOrigin != (winSizeOffset) and xOrigin != yOrigin and yOrigin != 0:
             
             #Higher level Penultimate Patches
             if xOrigin >= stepper:
