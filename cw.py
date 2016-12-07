@@ -11,11 +11,11 @@ def circlePatch(window, xOrigin, yOrigin, colour):
     
     #Square Box
     rect = Rectangle(Point(xOrigin, yOrigin), Point(xOrigin + 100, yOrigin + 100))
-    rect.draw(window)    
+    rect.draw(window)
     
     #Circle will start small in the middle and lower part of the square
     xOrigin = xOrigin + 50
-    yOrigin = yOrigin + 90
+    yOrigin = yOrigin + 95
     radius = 5
     
     #Create circles
