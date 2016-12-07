@@ -129,9 +129,7 @@ def main():
                 
                 if x == y:
                     colourValue = 0
-                elif x != 0 and y == 0:
-                    colourValue = 1
-                elif x == (winSize - 100) and y != (winSize - 100) and y != 0:
+                else:
                     colourValue = 1
                 
                 circlePatch(win, x, y, colourList[colourValue])
