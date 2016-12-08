@@ -8,7 +8,6 @@ from graphics import *
 
 # Circle Patch
 def circlePatch(window, xOrigin, yOrigin, colour):
-    
     # Square Box
     rect = Rectangle(Point(xOrigin, yOrigin), Point(xOrigin + 100, yOrigin + 100))
     rect.draw(window)
@@ -49,11 +48,9 @@ def penultimatePatch(window, xOrigin, yOrigin, colour):
     # Penultimate patch master loop
     for y in range(yOrigin, yOrigin + 100, 10):
         for x in range(xOrigin, xOrigin + 100, 5):
-            
             # White Squares
             if x in whiteSquareXCoordinates and y in whiteSquareYCoordinates:
                 drawSquare(window, x, y, x + 10, y + 10, "white")
-            
             # White Rectangles
             if x in whiteRectangularXCoordinates and y in whiteRectangularYCoordinates:
                 drawSquare(window, x, y, x + 20, y + 10, "white")
@@ -71,13 +68,7 @@ def getWindowSize():
     return winSize, size, winSizeOffset, offset
     
 # Get 3 colours from user
-def getColour():
-    
-    # Initialise
-    # firstColour = ""
-    # secondColour = ""
-    # thirdColour = ""
-    
+def getColour():    
     # Valid colours' list
     colourList = ["red", "green", "blue", "orange", "brown", "pink"]
     
@@ -117,18 +108,16 @@ def main():
     
     # Get choice of colour
     colourList = []
+    currentColourList = []
     colourList = getColour()
     
     stepper = 100
     
-    currentColourList = []
-    
     # Master Loop
     for y in range(0, winSize, 100):
         for x in range(0, winSize, 100):
-            
+            # Circle patches
             if (x == y) or (x > 0 and y == 0) or (x == winSizeOffset and y != (winSize - 100) and y != 0):
-                
                 if x == y:
                     colourValue = 0
                 else:
@@ -139,12 +128,10 @@ def main():
                 
             # Penultimate patches
             elif (x != winSizeOffset) and (x != y) and (y != 0):
-                
                 # Higher level penultimate patches
                 if x >= stepper:
                     colour = colourList[1]
                     currentColourList.append(1)
-                    
                 # Lower level penultimate patches
                 else:
                     colour = colourList[2]
@@ -170,6 +157,7 @@ def main():
         # Update the new value to the currentColourList
         indexValue = currentColourList[indexNumber]
         
+        # Toggle colour
         indexValue = indexValue + 1
         if indexValue > 2:
             indexValue = 0
