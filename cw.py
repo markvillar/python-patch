@@ -192,9 +192,4 @@ def main():
             
             penultimatePatch(win, xOrigin, yOrigin, colour)
             
-        stepper = stepper + 100
-        index = index + 1
-        
-        if index >= 3:
-            index = 0
 main()
