@@ -101,12 +101,12 @@ def getCoordinates(xPointer, yPointer):
     return xPointer, yPointer
 
 def getIndex(xOrigin, yOrigin, offset):
-    #Colour index location
     # Colour index location
     topIndex = xOrigin / 100
     sideIndex = yOrigin / 100
     index = (sideIndex * offset) + topIndex
     index = index + sideIndex
+    return int(index)
 
 #Main program
 def main():
