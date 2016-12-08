@@ -94,10 +94,10 @@ def getColour():
     
     return firstColour, secondColour, thirdColour
     
-#Round down X and Y coodinates to their nearest hundredth
+# Round down X and Y coodinates to their nearest hundredth
 def getCoordinates(xPointer, yPointer):
-    xPointer = 100 * math.floor(xPointer/100.0)
-    yPointer = 100 * math.floor(yPointer/100.0)
+    xPointer = 100 * math.floor(xPointer/100)
+    yPointer = 100 * math.floor(yPointer/100)
     return xPointer, yPointer
 
 def getIndex(xOrigin, yOrigin, offset):
@@ -108,60 +108,61 @@ def getIndex(xOrigin, yOrigin, offset):
     index = index + sideIndex
     return int(index)
 
-#Main program
+# Main program
 def main():
     winSize, size, winSizeOffset, offset = getWindowSize()
     win = GraphWin("Window", winSize, winSize)
     
-    #Get choice of colour
+    # Get choice of colour
     colourList = []
     colourList = getColour()
     
     stepper = 100
     
-    #Master Loop
+    currentColourList = []
+    
+    # Master Loop
     for y in range(0, winSize, 100):
         for x in range(0, winSize, 100):
             
-            #Circle Patches
             if (x == y) or (x > 0 and y == 0) or (x == (winSizeOffset) and y != (winSize - 100) and y != 0):
                 
                 if x == y:
                     colourValue = 0
                 else:
                     colourValue = 1
-                
+                    
                 circlePatch(win, x, y, colourList[colourValue])
-                elements.append(colourValue)
                 
-            #Penultimate Patches
-            elif x != winSizeOffset and x != y and y != 0:
+                currentColourList.append(colourValue)
                 
-                #Higher level Penultimate Patches
+            # Penultimate Patches
+            elif (x != winSizeOffset) and (x != y) and (y != 0):
+                
+                # Higher level Penultimate Patches
                 if x >= stepper:
                     colour = colourList[1]
-                
-                #Lower level Penultimate Patches
+                    currentColourList.append(1)
+                    
+                # Lower level Penultimate Patches
                 else:
                     colour = colourList[2]
-                
+                    currentColourList.append(2)
+                    
                 penultimatePatch(win, x, y, colour)
                 
         stepper = stepper + 100
     
-    #Colour Cycle
-    index = 1
+    # Colour Cycle
     while True:
-        
-        #Get coordinates
+        # Get coordinates
         pointer = win.getMouse()
         xPointer = pointer.getX()
         yPointer = pointer.getY()
         
-        #Return Processed Coordinates
+        # Return Processed Coordinates
         xOrigin, yOrigin = getCoordinates(xPointer, yPointer)
         
-        #Diagonal Circle Patches
         # Retrieve current colour index number
         indexNumber = getIndex(xOrigin, yOrigin, offset)
         
@@ -182,13 +183,13 @@ def main():
         # Penultimate Patches
         elif xOrigin != (winSizeOffset) and xOrigin != yOrigin and yOrigin != 0:
             
-            #Higher level Penultimate Patches
+            # Higher level Penultimate Patches
             if xOrigin >= stepper:
-                colour = colourList[index]
-            
-            #Lower level Penultimate Patches
+                colour = colourList[indexValue]
+                
+            # Lower level Penultimate Patches
             else:
-                colour = colourList[index]
+                colour = colourList[indexValue]
             
             penultimatePatch(win, xOrigin, yOrigin, colour)
             
