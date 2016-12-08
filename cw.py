@@ -9,16 +9,16 @@ from graphics import *
 # Circle Patch
 def circlePatch(window, xOrigin, yOrigin, colour):
     
-    #Square Box
+    # Square Box
     rect = Rectangle(Point(xOrigin, yOrigin), Point(xOrigin + 100, yOrigin + 100))
-    rect.draw(window)    
+    rect.draw(window)
     
-    #Circle will start small in the middle and lower part of the square
+    # Circle will start small in the middle and lower part of the square
     xOrigin = xOrigin + 50
-    yOrigin = yOrigin + 90
+    yOrigin = yOrigin + 95
     radius = 5
     
-    #Create circles
+    # Create circles
     for i in range(10):
         circle = Circle(Point(xOrigin, yOrigin), radius)
         circle.draw(window)
@@ -35,30 +35,30 @@ def drawSquare(window, topLeftX, topLeftY, bottomRightX, bottomRightY, colour):
 # Penultimate Patch
 def penultimatePatch(window, xOrigin, yOrigin, colour):
     
-    #Inverted Background
+    # Inverted Background
     drawSquare(window, xOrigin, yOrigin, xOrigin + 100, yOrigin + 100, colour)
     
-    #White Square top left coodinates
+    # White Square top left coodinates
     whiteSquareXCoordinates = list(range(xOrigin + 5, xOrigin + 86, 20))
     whiteSquareYCoordinates = list(range(yOrigin, yOrigin + 101, 20))
     
-    #White rectangular shape top left coordinates
+    # White rectangular shape top left coordinates
     whiteRectangularXCoordinates = list(range(xOrigin, xOrigin + 101, 20))
     whiteRectangularYCoordinates = list(range(yOrigin + 10, yOrigin + 91, 20))
     
-    #Penultimate patch master loop
+    # Penultimate patch master loop
     for y in range(yOrigin, yOrigin + 100, 10):
         for x in range(xOrigin, xOrigin + 100, 5):
             
-            #White Squares
+            # White Squares
             if x in whiteSquareXCoordinates and y in whiteSquareYCoordinates:
                 drawSquare(window, x, y, x + 10, y + 10, "white")
             
-            #White Rectangles
+            # White Rectangles
             if x in whiteRectangularXCoordinates and y in whiteRectangularYCoordinates:
                 drawSquare(window, x, y, x + 20, y + 10, "white")
             
-#Gets window size from user
+# Gets window size from user
 def getWindowSize():
     size = 0
     validSize = [5, 7, 9]
@@ -66,17 +66,18 @@ def getWindowSize():
     while size not in validSize:
         size = eval(input("Enter a Valid Window Size: "))
     offset = size - 1
+    winSizeOffset = offset * 100
     winSize = size * 100
-    return winSize, size, offset
+    return winSize, size, winSizeOffset, offset
     
-#Get 3 colours from user
+# Get 3 colours from user
 def getColour():
     
     firstColour = ""
     secondColour = ""
     thirdColour = ""
     
-    #Valid colours' list
+    # Valid colours' list
     colourList = ["red", "green", "blue", "orange", "brown", "pink"]
     
     firstColour = input("Enter the first colour:")
@@ -93,104 +94,103 @@ def getColour():
     
     return firstColour, secondColour, thirdColour
     
-#Round down X and Y coodinates to their nearest hundredth
+# Round down X and Y coodinates to their nearest hundredth
 def getCoordinates(xPointer, yPointer):
-    xPointer = 100 * math.floor(xPointer/100.0)
-    yPointer = 100 * math.floor(yPointer/100.0)
+    xPointer = 100 * math.floor(xPointer/100)
+    yPointer = 100 * math.floor(yPointer/100)
     return xPointer, yPointer
 
 def getIndex(xOrigin, yOrigin, offset):
-    #Colour index location
-    topIndex = xOrigin/100
-    sideIndex = yOrigin/100
+    # Colour index location
+    topIndex = xOrigin / 100
+    sideIndex = yOrigin / 100
     index = (sideIndex * offset) + topIndex
-    
-    #Float to int
-    index = int(index)
-    return index
+    index = index + sideIndex
+    return int(index)
 
-#Main program
+# Main program
 def main():
-    winSize, size, offset = getWindowSize()
+    winSize, size, winSizeOffset, offset = getWindowSize()
     win = GraphWin("Window", winSize, winSize)
     
-    #Get choice of colour
+    # Get choice of colour
     colourList = []
     colourList = getColour()
     
     stepper = 100
     
-    #Master Loop
+    currentColourList = []
+    
+    # Master Loop
     for y in range(0, winSize, 100):
         for x in range(0, winSize, 100):
             
-            #Diagonal Circle Patches
-            if x == y:
-                circlePatch(win, x, y, colourList[0])
-            
-            #Horizontal Circle Patches
-            if x != 0 and y == 0:
-                circlePatch(win, x, y, colourList[1])
-            
-            #Vertical Circle Patches
-            if x == (winSize - 100) and y != (winSize - 100) and y != 0:
-                circlePatch(win, x, y, colourList[1])
-            
-            #Penultimate Patches
-            if x != (winSize - 100) and x != y and y != 0:
+            if (x == y) or (x > 0 and y == 0) or (x == (winSizeOffset) and y != (winSize - 100) and y != 0):
                 
-                #Higher level Penultimate Patches
+                if x == y:
+                    colourValue = 0
+                else:
+                    colourValue = 1
+                    
+                circlePatch(win, x, y, colourList[colourValue])
+                
+                currentColourList.append(colourValue)
+                
+            # Penultimate Patches
+            elif (x != winSizeOffset) and (x != y) and (y != 0):
+                
+                # Higher level Penultimate Patches
                 if x >= stepper:
                     colour = colourList[1]
-                
-                #Lower level Penultimate Patches
+                    currentColourList.append(1)
+                    
+                # Lower level Penultimate Patches
                 else:
                     colour = colourList[2]
-                
+                    currentColourList.append(2)
+                    
                 penultimatePatch(win, x, y, colour)
                 
         stepper = stepper + 100
     
-    #Colour Cycle
-    index = 1
+    # Colour Cycle
     while True:
-        
-        #Get coordinates
+        # Get coordinates
         pointer = win.getMouse()
         xPointer = pointer.getX()
         yPointer = pointer.getY()
         
-        #Return Processed Coordinates
+        # Return Processed Coordinates
         xOrigin, yOrigin = getCoordinates(xPointer, yPointer)
         
-        #Diagonal Circle Patches
-        if xOrigin == yOrigin:
-            circlePatch(win, xOrigin, yOrigin, colourList[index])
-            
-        #Horizontal Circle Patches
-        if xOrigin != 0 and yOrigin == 0:
-            circlePatch(win, xOrigin, yOrigin, colourList[index])
-            
-        #Vertical Circle Patches
-        if xOrigin == (winSize - 100) and yOrigin != (winSize - 100) and yOrigin != 0:
-            circlePatch(win, xOrigin, yOrigin, colourList[index])
+        # Retrieve current colour index number
+        indexNumber = getIndex(xOrigin, yOrigin, offset)
         
-        #Penultimate Patches
-        if xOrigin != (winSize - 100) and xOrigin != yOrigin and yOrigin != 0:
+        # Re-insert the new value to the list
+        indexValue = currentColourList[indexNumber]
+        
+        indexValue = indexValue + 1
+        
+        if indexValue > 2:
+            indexValue = 0
+        
+        # Circle Patches
+        if (xOrigin == yOrigin) or (xOrigin > 0 and yOrigin == 0) or (xOrigin == winSizeOffset and yOrigin != winSizeOffset and yOrigin != 0):
             
-            #Higher level Penultimate Patches
+            circlePatch(win, xOrigin, yOrigin, colourList[indexValue])
+            currentColourList[indexNumber] = indexValue
+            
+        # Penultimate Patches
+        elif xOrigin != (winSizeOffset) and xOrigin != yOrigin and yOrigin != 0:
+            
+            # Higher level Penultimate Patches
             if xOrigin >= stepper:
-                colour = colourList[index]
-            
-            #Lower level Penultimate Patches
+                colour = colourList[indexValue]
+                
+            # Lower level Penultimate Patches
             else:
-                colour = colourList[index]
+                colour = colourList[indexValue]
             
             penultimatePatch(win, xOrigin, yOrigin, colour)
             
-        stepper = stepper + 100
-        index = index + 1
-        
-        if index >= 3:
-            index = 0
 main()

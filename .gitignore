@@ -2,6 +2,10 @@
 Thumbs.db
 ehthumbs.db
 
+#PyDev
+.pydevproject
+.project
+
 #Visual Studio
 .vscode
 
