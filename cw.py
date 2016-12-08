@@ -183,14 +183,6 @@ def main():
         # Penultimate Patches
         elif xOrigin != winSizeOffset and xOrigin != yOrigin and yOrigin != 0:
             
-            # Higher level Penultimate Patches
-            if xOrigin >= stepper:
-                colour = colourList[indexValue]
-                
-            # Lower level Penultimate Patches
-            else:
-                colour = colourList[indexValue]
-            
-            penultimatePatch(win, xOrigin, yOrigin, colour)
-            
+            penultimatePatch(win, xOrigin, yOrigin, colourList[indexValue])
+            currentColourList[indexNumber] = indexValue
 main()
