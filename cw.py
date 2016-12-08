@@ -162,17 +162,24 @@ def main():
         xOrigin, yOrigin = getCoordinates(xPointer, yPointer)
         
         #Diagonal Circle Patches
-        if (xOrigin == yOrigin) or (xOrigin != 0 and yOrigin == 0) or (xOrigin == (winSize - 100) and yOrigin != (winSize - 100) and yOrigin != 0):
-        if (xOrigin == yOrigin) or (xOrigin != 0 and yOrigin == 0) or (xOrigin == (winSizeOffset) and yOrigin != (winSizeOffset) and yOrigin != 0):
-            
-            #########################
+        # Retrieve current colour index number
+        indexNumber = getIndex(xOrigin, yOrigin, offset)
+        
+        # Re-insert the new value to the list
+        indexValue = currentColourList[indexNumber]
+        
+        indexValue = indexValue + 1
+        
+        if indexValue > 2:
+            indexValue = 0
+        
+        # Circle Patches
+        if (xOrigin == yOrigin) or (xOrigin > 0 and yOrigin == 0) or (xOrigin == winSizeOffset and yOrigin != winSizeOffset and yOrigin != 0):
             
             circlePatch(win, xOrigin, yOrigin, colourList[indexValue])
-            elements[indexNumber] = indexValue
+            currentColourList[indexNumber] = indexValue
             
-            circlePatch(win, xOrigin, yOrigin, colourList[index])
-        
-        #Penultimate Patches
+        # Penultimate Patches
         elif xOrigin != (winSizeOffset) and xOrigin != yOrigin and yOrigin != 0:
             
             #Higher level Penultimate Patches
