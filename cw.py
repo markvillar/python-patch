@@ -25,7 +25,7 @@ def circlePatch(window, xOrigin, yOrigin, colour):
         circle.setOutline(colour)
         radius = radius + 5
         yOrigin = yOrigin - 5
-
+        
 # Penultimate patch's square drawer
 def drawSquare(window, topLeftX, topLeftY, bottomRightX, bottomRightY, colour):
     rect = Rectangle(Point(topLeftX, topLeftY), Point(bottomRightX, bottomRightY))
@@ -133,7 +133,6 @@ def main():
                     colourValue = 1
                     
                 circlePatch(win, x, y, colourList[colourValue])
-                
                 currentColourList.append(colourValue)
                 
             # Penultimate Patches
@@ -170,19 +169,16 @@ def main():
         indexValue = currentColourList[indexNumber]
         
         indexValue = indexValue + 1
-        
         if indexValue > 2:
             indexValue = 0
         
         # Circle Patches
         if (xOrigin == yOrigin) or (xOrigin > 0 and yOrigin == 0) or (xOrigin == winSizeOffset and yOrigin != winSizeOffset and yOrigin != 0):
-            
             circlePatch(win, xOrigin, yOrigin, colourList[indexValue])
             currentColourList[indexNumber] = indexValue
             
         # Penultimate Patches
         elif xOrigin != winSizeOffset and xOrigin != yOrigin and yOrigin != 0:
-            
             penultimatePatch(win, xOrigin, yOrigin, colourList[indexValue])
             currentColourList[indexNumber] = indexValue
 main()
