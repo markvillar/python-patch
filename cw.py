@@ -125,7 +125,7 @@ def main():
     for y in range(0, winSize, 100):
         for x in range(0, winSize, 100):
             
-            if (x == y) or (x > 0 and y == 0) or (x == (winSizeOffset) and y != (winSize - 100) and y != 0):
+            if (x == y) or (x > 0 and y == 0) or (x == winSizeOffset and y != (winSize - 100) and y != 0):
                 
                 if x == y:
                     colourValue = 0
@@ -181,7 +181,7 @@ def main():
             currentColourList[indexNumber] = indexValue
             
         # Penultimate Patches
-        elif xOrigin != (winSizeOffset) and xOrigin != yOrigin and yOrigin != 0:
+        elif xOrigin != winSizeOffset and xOrigin != yOrigin and yOrigin != 0:
             
             # Higher level Penultimate Patches
             if xOrigin >= stepper:
