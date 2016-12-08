@@ -73,9 +73,10 @@ def getWindowSize():
 # Get 3 colours from user
 def getColour():
     
-    firstColour = ""
-    secondColour = ""
-    thirdColour = ""
+    # Initialise
+    # firstColour = ""
+    # secondColour = ""
+    # thirdColour = ""
     
     # Valid colours' list
     colourList = ["red", "green", "blue", "orange", "brown", "pink"]
