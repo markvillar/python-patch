@@ -72,16 +72,22 @@ def getColour():
     colourList = ["red", "green", "blue", "orange", "brown", "pink"]
     
     firstColour = input("Enter the first colour:")
+    firstColour = firstColour.lower()
     while firstColour not in colourList:
         firstColour = input("Please enter a valid colour:")
+        firstColour = firstColour.lower()
     
     secondColour = input("Enter the second colour:")
+    secondColour = secondColour.lower()
     while secondColour == firstColour or secondColour not in colourList:
         secondColour = input("Please enter another valid colour:")
+        secondColour = secondColour.lower()
     
     thirdColour = input("Enter the third colour:")
+    thirdColour = thirdColour.lower()
     while thirdColour == secondColour or thirdColour == firstColour or thirdColour not in colourList:
         thirdColour = input("Please enter another valid colour:")
+        thirdColour = thirdColour.lower()
     
     return firstColour, secondColour, thirdColour
     
