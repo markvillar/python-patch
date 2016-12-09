@@ -62,8 +62,8 @@ def getWindowSize():
     while size not in validSize:
         size = eval(input("Enter a Valid Window Size: "))
     offset = size - 1
-    winSizeOffset = offset * 100
     winSize = size * 100
+    winSizeOffset = offset * 100
     return winSize, size, winSizeOffset, offset
     
 # Get 3 colours from user
