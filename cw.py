@@ -37,7 +37,7 @@ def penultimatePatch(window, xOrigin, yOrigin, colour):
     # Inverted Background
     drawSquare(window, xOrigin, yOrigin, xOrigin + 100, yOrigin + 100, colour)
     
-    # White Square top left coodinates
+    # White Square top left coordinates
     whiteSquareXCoordinates = list(range(xOrigin + 5, xOrigin + 86, 20))
     whiteSquareYCoordinates = list(range(yOrigin, yOrigin + 101, 20))
     
@@ -68,7 +68,7 @@ def getWindowSize():
     return winSize, size, winSizeOffset, offset
     
 # Get 3 colours from user
-def getColour():    
+def getColour():
     # Valid colours' list
     colourList = ["red", "green", "blue", "orange", "brown", "pink"]
     
@@ -86,12 +86,12 @@ def getColour():
     
     return firstColour, secondColour, thirdColour
     
-# Round down X and Y coodinates to their nearest hundredth
+# Round down X and Y coordinates to their nearest hundredth
 def getCoordinates(xPointer, yPointer):
     xPointer = 100 * math.floor(xPointer/100)
     yPointer = 100 * math.floor(yPointer/100)
     return xPointer, yPointer
-
+    
 # Get the index number from the colour list
 def getIndex(xOrigin, yOrigin, offset):
     # Colour index location
@@ -100,7 +100,7 @@ def getIndex(xOrigin, yOrigin, offset):
     index = (sideIndex * offset) + topIndex
     index = index + sideIndex
     return int(index)
-
+    
 # Main program
 def main():
     winSize, size, winSizeOffset, offset = getWindowSize()
@@ -161,7 +161,7 @@ def main():
         indexValue = indexValue + 1
         if indexValue > 2:
             indexValue = 0
-        
+            
         # Circle patches
         if (xOrigin == yOrigin) or (xOrigin > 0 and yOrigin == 0) or (xOrigin == winSizeOffset and yOrigin != winSizeOffset and yOrigin != 0):
             circlePatch(win, xOrigin, yOrigin, colourList[indexValue])
