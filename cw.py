@@ -104,7 +104,7 @@ def getIndex(xOrigin, yOrigin, offset):
 # Main program
 def main():
     winSize, size, winSizeOffset, offset = getWindowSize()
-    win = GraphWin("Window", winSize, winSize)
+    win = GraphWin("Patch Designs", winSize, winSize)
     
     # Get choice of colour
     colourList = []
