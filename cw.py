@@ -1,8 +1,3 @@
-#-----------------------------------------------------------------
-#   Description:    Python Coursework
-#   Author:         Mark Villar                    Date: 22-11-16
-#   Student ID:     UP773229
-#-----------------------------------------------------------------
 import math
 from graphics import *
 
