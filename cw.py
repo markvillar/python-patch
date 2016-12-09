@@ -57,7 +57,6 @@ def penultimatePatch(window, xOrigin, yOrigin, colour):
             
 # Gets window size from user
 def getWindowSize():
-    size = 0
     validSize = [5, 7, 9]
     size = eval(input("Enter Window Size: "))
     while size not in validSize:
